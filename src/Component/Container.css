@@ -1,0 +1,15 @@
+.score-board {
+  margin-top: 2vh;
+  background-color: beige;
+  border-radius: 15px;
+}
+#submit-btn {
+  border-radius: 3px;
+  border: none;
+  background-color: #ff6b6b;
+  color: white;
+  transition: 0.3s ease-in-out;
+}
+#submit-btn:hover {
+  transform: scale(1.1);
+}
