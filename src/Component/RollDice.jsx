@@ -25,6 +25,13 @@ class RollDice extends Component {
   };
   handlePass = () => {
     console.log("pass");
+    let playr;
+    this.state.player1
+      ? this.setState({ player1: false, player2: true })
+      : // console.log("player2")
+        this.setState({ player1: true, player2: false });
+    //     console.log("player1");
+    // this.setState({ playr });
   };
   render() {
     return (
@@ -41,14 +48,14 @@ class RollDice extends Component {
           <Container
             key="player1"
             playerno="1"
-            playing
+            playing={this.state.player1}
             onRoll={this.handleRoll}
             onPass={this.handlePass}
           />
           <Container
             key="player2"
             playerno="2"
-            playing={false}
+            playing={this.state.player2}
             onRoll={this.handleRoll}
             onPass={this.handlePass}
           />

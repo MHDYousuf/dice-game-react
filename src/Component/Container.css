@@ -3,6 +3,9 @@
   background-color: beige;
   border-radius: 15px;
 }
+.shadow-selected {
+  box-shadow: 2rem 2rem 2rem rgba(129, 36, 94, 0.8) !important;
+}
 #submit-btn {
   border-radius: 3px;
   border: none;
