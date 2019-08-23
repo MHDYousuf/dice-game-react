@@ -34,14 +34,17 @@ class RollDice extends Component {
     return dice;
   };
   handlePass = () => {
-    console.log("pass");
     let { scorboard } = this.state;
     if (scorboard[0].playing) {
       scorboard[0].playing = false;
       scorboard[1].playing = true;
+      scorboard[0].totalscore += scorboard[0].currentscore;
+      scorboard[0].currentscore = 0;
     } else {
       scorboard[1].playing = false;
       scorboard[0].playing = true;
+      scorboard[1].totalscore += scorboard[1].currentscore;
+      scorboard[1].currentscore = 0;
     }
     this.setState({ scorboard });
   };
