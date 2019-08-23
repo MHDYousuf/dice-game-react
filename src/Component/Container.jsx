@@ -3,11 +3,6 @@ import "./Container.css";
 // import RollDice from "./RollDice";
 
 class Container extends Component {
-  state = {
-    currentscore: this.props.currentscore,
-    totalscore: this.props.totalscore
-  };
-
   buttons = () => {
     if (!this.props.playing) {
       return <h4 className="badge p-3 badge-info">Wait For your Turn</h4>;
@@ -43,21 +38,21 @@ class Container extends Component {
   };
   render() {
     const { playerno } = this.props;
+    const { currentscore, totalscore } = this.props.score;
     return (
       <div
         className={this.classer()}
         // style={{ boxShadow: "5px 5px 20px #999" }}
       >
         <h4 className="p-3">Player {playerno}</h4>
-        <h5 className="">{this.state.currentscore}</h5>
+        <h5 className="">{currentscore}</h5>
         <p className="p-2">Current Score</p>
-        <h5 className="">{this.state.totalscore}</h5>
+        <h5 className="">{totalscore}</h5>
         <p className="p-2">Total Score</p>
         {this.buttons()}
       </div>
     );
   }
-  RollDice = () => {};
 }
 Container.defaultProps = {
   currentscore: 0,

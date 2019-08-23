@@ -6,7 +6,11 @@ class RollDice extends Component {
     flag: false,
     dice: 0,
     player1: true,
-    player2: false
+    player2: false,
+    scorboard: [
+      { playing: true, currentscore: 0, totalscore: 0, num: 1 },
+      { playing: false, currentscore: 0, totalscore: 0, num: 2 }
+    ]
   };
   start = e => {
     e.preventDefault();
@@ -22,6 +26,7 @@ class RollDice extends Component {
   handleRoll = () => {
     const dice = Math.floor(Math.random() * 6 + 1);
     this.setState({ dice });
+    return dice;
   };
   handlePass = () => {
     console.log("pass");
@@ -45,20 +50,32 @@ class RollDice extends Component {
           </div>
         </div>
         <div className="d-flex">
-          <Container
+          {/* <Container
             key="player1"
-            playerno="1"
+            playerno={0}
+            score={this.state.scorboard[0]}
             playing={this.state.player1}
             onRoll={this.handleRoll}
             onPass={this.handlePass}
           />
           <Container
             key="player2"
-            playerno="2"
+            playerno={1}
+            score={this.state.scorboard[1]}
             playing={this.state.player2}
             onRoll={this.handleRoll}
             onPass={this.handlePass}
-          />
+          /> */}
+          {this.state.scorboard.map(c => (
+            <Container
+              key={"player" + c.num}
+              playerno={c.num}
+              score={c}
+              playing={c.playing}
+              onRoll={this.handleRoll}
+              onPass={this.handlePass}
+            />
+          ))}
         </div>
         <div className="text-center pt-4">
           <button
