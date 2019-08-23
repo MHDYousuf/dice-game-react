@@ -1,5 +1,5 @@
 import React from "react";
-import RollDice from "./Component/RollDice";
+import RollDice from "./Component/RollDice.jsx";
 import "./App.css";
 function App() {
   // Declare a new state variable, which we'll call "count"

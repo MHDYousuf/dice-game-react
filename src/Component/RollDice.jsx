@@ -3,7 +3,10 @@ import Container from "./Container";
 import "./RollDice.css";
 class RollDice extends Component {
   state = {
-    flag: false
+    flag: false,
+    dice: 0,
+    player1: true,
+    player2: false
   };
   start = e => {
     e.preventDefault();
@@ -16,6 +19,13 @@ class RollDice extends Component {
     }
   };
   hold = () => {};
+  handleRoll = () => {
+    const dice = Math.floor(Math.random() * 6 + 1);
+    this.setState({ dice });
+  };
+  handlePass = () => {
+    console.log("pass");
+  };
   render() {
     return (
       <div>
@@ -24,26 +34,28 @@ class RollDice extends Component {
             <h3 className="pt-5 texcolor">Dice Game</h3>
           </div>
           <div className="text-center pt-5 pb-0">
-            <h5>{Math.floor(Math.random() * 6 + 1)}</h5>
+            <h5>{this.state.dice}</h5>
           </div>
         </div>
         <div className="d-flex">
           <Container
             key="player1"
             playerno="1"
-            currentscore="0"
-            totalscore="0"
+            playing
+            onRoll={this.handleRoll}
+            onPass={this.handlePass}
           />
           <Container
             key="player2"
             playerno="2"
-            currentscore="0"
-            totalscore="0"
+            playing={false}
+            onRoll={this.handleRoll}
+            onPass={this.handlePass}
           />
         </div>
         <div className="text-center pt-4">
           <button
-            className="p-2 mr-2"
+            className="p-2 mr-2 btn btn-dark"
             onClick={this.start}
             id="start-btn"
             type="submit"
@@ -51,7 +63,7 @@ class RollDice extends Component {
             Start
           </button>
           <button
-            className="p-2"
+            className="p-2 btn btn-warning"
             onClick={this.hold}
             id="reset-btn"
             type="reset"
