@@ -1,11 +1,17 @@
 import React, { Component } from "react";
 import "./Container.css";
-// import RollDice from "./RollDice";
 
 class Container extends Component {
+  turnWait = () => {
+    console.log("huhu");
+  };
   buttons = () => {
     if (!this.props.playing) {
-      return <h4 className="badge p-3 badge-info">Wait For your Turn</h4>;
+      return (
+        <p className="badge p-3 badge-info" onSelect={this.turnWait()}>
+          Wait For your Turn
+        </p>
+      );
     } else {
       return (
         <>
@@ -40,10 +46,7 @@ class Container extends Component {
     const { playerno } = this.props;
     const { currentscore, totalscore } = this.props.score;
     return (
-      <div
-        className={this.classer()}
-        // style={{ boxShadow: "5px 5px 20px #999" }}
-      >
+      <div className={this.classer()}>
         <h4 className="p-3">Player {playerno}</h4>
         <h5 className="">{currentscore}</h5>
         <p className="p-2">Current Score</p>

@@ -12,28 +12,20 @@ class RollDice extends Component {
       { playing: false, currentscore: 0, totalscore: 0, num: 2 }
     ]
   };
-  start = e => {
-    e.preventDefault();
-    if (e.target.innerHTML === "Start") {
-      this.setState({ flag: false });
-      e.target.innerHTML = "Stop";
-    } else {
-      this.setState({ flag: true });
-      e.target.innerHTML = "Start";
-    }
-  };
-  hold = () => {};
+
   handleRoll = () => {
     const dice = Math.floor(Math.random() * 6) + 1;
     const scorboard = this.state.scorboard.map(c => {
       c.currentscore += c.playing && dice;
       return c;
     });
-    if (dice === 1) {
-      this.props.onWin(this.state.scorboard);
-      console.log("winnn");
-    }
+
     this.setState({ dice, scorboard });
+    if (dice === 1) {
+      setInterval(() => {
+        this.props.onWin(this.state.scorboard);
+      }, 3000);
+    }
   };
   handlePass = () => {
     let { scorboard } = this.state;
@@ -58,7 +50,11 @@ class RollDice extends Component {
             <h3 className="pt-5 texcolor">Dice Game</h3>
           </div>
           <div className="text-center pt-5 pb-0">
-            <h5>{this.state.dice}</h5>
+            <img
+              src={process.env.PUBLIC_URL + "/dice-" + this.state.dice + ".png"}
+              alt={this.state.dice}
+              style={{ width: "8vw" }}
+            />
           </div>
         </div>
         <div className="d-flex">
@@ -89,7 +85,7 @@ class RollDice extends Component {
             />
           ))}
         </div>
-        <div className="text-center pt-4">
+        {/* <div className="text-center pt-4">
           <button
             className="p-2 mr-2 btn btn-dark"
             onClick={this.start}
@@ -106,10 +102,22 @@ class RollDice extends Component {
           >
             Hold
           </button>
-        </div>
+        </div> */}
       </div>
     );
   }
+
+  // hold = () => {};
+  // start = e => {
+  //   e.preventDefault();
+  //   if (e.target.innerHTML === "Start") {
+  //     this.setState({ flag: false });
+  //     e.target.innerHTML = "Stop";
+  //   } else {
+  //     this.setState({ flag: true });
+  //     e.target.innerHTML = "Start";
+  //   }
+  // };
 }
 
 export default RollDice;
