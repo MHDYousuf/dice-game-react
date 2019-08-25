@@ -2,3 +2,6 @@
   color: "red";
   text-transform: "uppercase";
 }
+#start-btn {
+  text-transform: uppercase;
+}
