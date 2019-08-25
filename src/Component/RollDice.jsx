@@ -24,15 +24,18 @@ class RollDice extends Component {
   };
   hold = () => {};
   handleRoll = () => {
-    const dice = Math.floor(Math.random() * 6 + 1);
+    const dice = Math.floor(Math.random() * 6) + 1;
     const scorboard = this.state.scorboard.map(c => {
       c.currentscore += c.playing && dice;
       return c;
     });
-
     this.setState({ dice, scorboard });
-    return dice;
+    if (dice === 1) {
+      this.props.onWin();
+      console.log("winnn");
+    }
   };
+
   handlePass = () => {
     let { scorboard } = this.state;
     if (scorboard[0].playing) {
