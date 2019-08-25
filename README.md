@@ -1,4 +1,4 @@
-This is done by MHDYousuf and muzam_il
+This is done by MHDYousuf and muzam_il.
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
