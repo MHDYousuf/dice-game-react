@@ -29,13 +29,12 @@ class RollDice extends Component {
       c.currentscore += c.playing && dice;
       return c;
     });
-    this.setState({ dice, scorboard });
     if (dice === 1) {
-      this.props.onWin();
+      this.props.onWin(this.state.scorboard);
       console.log("winnn");
     }
+    this.setState({ dice, scorboard });
   };
-
   handlePass = () => {
     let { scorboard } = this.state;
     if (scorboard[0].playing) {
