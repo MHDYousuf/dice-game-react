@@ -23,24 +23,24 @@ export default class App extends Component {
   state = { flag: true, scoreboard: [] };
   render() {
     return (
-      <div className="row m-0 h-100">
-        <div className="card offset-4 col-4 my-auto">
-          <img className="card-img-top" src={image} alt="Card image cap" />
-          <div className="card-body">
-            <h3 className="card-title">WINNER : Player2</h3>
-            <h4 className="card-text">Player1 Score:15</h4>
-            <h4 className="card-text">Player Score:25</h4>
-          </div>
-        </div>
-      </div>
+      // <div className="row m-0 h-100">
+      //   <div className="card offset-4 col-4 my-auto">
+      //     <img className="card-img-top" src={image} alt="Card image cap" />
+      //     <div className="card-body">
+      //       <h3 className="card-title">WINNER : Player2</h3>
+      //       <h4 className="card-text">Player1 Score:15</h4>
+      //       <h4 className="card-text">Player Score:25</h4>
+      //     </div>
+      //   </div>
+      // </div>
 
-      // <>
-      //   {this.state.flag ? (
-      //     <RollDice onWin={this.onWinning} />
-      //   ) : (
-      //     this.winner_winner_chicken_dinner()
-      //   )}
-      // </>
+      <>
+        {this.state.flag ? (
+          <RollDice onWin={this.onWinning} />
+        ) : (
+          this.winner_winner_chicken_dinner()
+        )}
+      </>
     );
   }
   onWinning = scoreboard => {
