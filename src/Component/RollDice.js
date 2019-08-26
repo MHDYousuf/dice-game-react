@@ -3,14 +3,14 @@ import Container from "./Container";
 import "./RollDice.css";
 class RollDice extends Component {
   state = {
-    flag: false,
+    flag: true,
     isStarted: false
   };
   start = e => {
     e.preventDefault();
-    this.state.flag === false
-      ? this.setState({ flag: true })
-      : this.setState({ flag: false });
+    // this.state.flag === false
+    //   ? this.setState({ flag: true })
+    //   : this.setState({ flag: false });+
   };
   render() {
     return (
@@ -38,7 +38,7 @@ class RollDice extends Component {
           />
         </div>
         <div className="text-center pt-4">
-          {!this.state.flag ? (
+          {/* {!this.state.flag ? (
             <button
               className="pl-5 pr-5 pt-2 pb-2 btn btn-primary"
               onClick={this.start}
@@ -56,7 +56,17 @@ class RollDice extends Component {
             >
               Stop
             </button>
-          )}
+          )} */}
+          <button
+            className={
+              this.state.flag
+                ? "pl-5 pr-5 pt-2 pb-2 btn btn-primary"
+                : "pl-5 pr-5 pt-2 pb-2 btn btn-danger"
+            }
+            onClick={() => this.setState({ flag: !this.state.flag })}
+          >
+            {this.state.flag ? "start" : "stop"}
+          </button>
         </div>
       </div>
     );
